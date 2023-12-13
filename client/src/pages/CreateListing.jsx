@@ -108,7 +108,7 @@ export default function CreateListing() {
         e.preventDefault();
         try {
             if(formData.imageUrls.length < 1) return setError('You Must upload Atleast 1 Image');
-            if(formData.regularPrice < formData.discountPrice) return setError('Discounted Price Must be lower than Regular Price');
+            if(+formData.regularPrice < +formData.discountPrice) return setError('Discounted Price Must be lower than Regular Price');
             setLoading(true);
             setError(false);
             const res = await fetch('/api/listing/create', {
